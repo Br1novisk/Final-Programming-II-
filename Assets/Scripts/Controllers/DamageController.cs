@@ -15,7 +15,7 @@ public class DamageController : MonoBehaviour
             EnemyController enemy = other.GetComponent<EnemyController>();
             if (enemy != null)
             {
-                enemy.TakeDamage(damageAmount);
+                //enemy.TakeDamage(damageAmount);
                 DestroyBullet();
                 Debug.Log("Enemy takes damage!");
             }

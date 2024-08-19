@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 176285963137617632}
   - component: {fileID: 906614047309295618}
   - component: {fileID: 906614047309295619}
+  - component: {fileID: 1399448596518096945}
   m_Layer: 6
   m_Name: Enemy (2)
   m_TagString: Enemy
@@ -234,7 +235,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a46236280f46149954fad4f2a659d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
   damageAudio: {fileID: 8300000, guid: a549a1a71119a194a8012c82a21f45f0, type: 3}
   waypoints:
   - {fileID: 0}
@@ -305,6 +305,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1399448596518096945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906614047914283551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 486e37676bbc7694fa06ad6121b21e4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 90
+  _hitEffect: {fileID: 100002, guid: 00fedc70b62a31e448e8ccc298257b56, type: 3}
 --- !u!1 &906614048224344396
 GameObject:
   m_ObjectHideFlags: 0

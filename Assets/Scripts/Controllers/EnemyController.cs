@@ -5,12 +5,10 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] private float maxHealth;
     [SerializeField] private AudioClip damageAudio;
     [SerializeField] private Transform[] waypoints;
     [SerializeField] private float waypointStoppingDistance = 0.2f;
 
-    private float currentHealth;
     private AudioSource audioSource;
     private Transform target;
     private NavMeshAgent agent;
@@ -22,7 +20,6 @@ public class EnemyController : MonoBehaviour
     {
         target = PlayerController.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
-        currentHealth = maxHealth;
         audioSource = GetComponent<AudioSource>();
 
         StartCoroutine(RotateBetweenWaypoints());
@@ -67,19 +64,7 @@ public class EnemyController : MonoBehaviour
             agent.SetDestination(waypoints[currentWaypointIndex].position);
         }
     }
-
-    
-
-    public void TakeDamage (int damageAmount)
-    {
-        currentHealth -= damageAmount;
-        Debug.Log("Enemy Health: " + currentHealth);
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
-    }
-
+      
     private void Die()
     {
         SoundFXManager.Instance.PlaySoundFXClip(damageAudio, transform, 0.2f);
