@@ -25,7 +25,7 @@ public class DamageController : MonoBehaviour
         {
             IngredientController ingredient = other.GetComponent<IngredientController>();
             
-                ingredient.TakeDamage(damageAmount); 
+                //ingredient.TakeDamage(damageAmount); 
                 DestroyBullet();
                 Debug.Log("Ingredient under attack!");
             

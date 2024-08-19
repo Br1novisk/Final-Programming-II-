@@ -1,36 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class IngredientController : MonoBehaviour
 {
-    [SerializeField] private float maxHealth;
-    [SerializeField] private float objective;
+    private int destroyedObjects = 0;
+    [SerializeField] private int targetDestroyedCount = 5;
 
-    private float currentHealth;
+    [SerializeField] TMP_Text destroyedObjectsText; 
 
     void Start()
     {
-        currentHealth = maxHealth;
-        objective = 5f;
-
+        UpdateDestroyedObjectsText();
     }
 
-    public void TakeDamage(int damageAmount)
+    public void ObjectDestroyed()
     {
-        currentHealth -= damageAmount;
-        Debug.Log("Ingredient Integrity: " + currentHealth);
-        if (currentHealth <= 0)
+        destroyedObjects++;
+        UpdateDestroyedObjectsText();
+
+        if (destroyedObjects >= targetDestroyedCount)
         {
-            Die();
+            Debug.Log("Hottest dog!");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
         }
     }
 
-    private void Die()
+    void UpdateDestroyedObjectsText()
     {
-        Debug.Log("Ingredient Collected");
-        objective--;
-        Destroy(gameObject);
-
+        destroyedObjectsText.text = "Ingredients: " + destroyedObjects + "/" + targetDestroyedCount;
     }
 }

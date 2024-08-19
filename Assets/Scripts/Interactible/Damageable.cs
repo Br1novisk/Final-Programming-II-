@@ -29,7 +29,13 @@ public class Damageable : MonoBehaviour
     void Die()
     {
         print(name + " was destroyed");
+
+        if (CompareTag("Ingredient"))
+        {
+            FindObjectOfType<IngredientController>().ObjectDestroyed();
+        }
+
         Destroy(gameObject);
     }
 
-}
+ }

@@ -9,7 +9,6 @@ public class Ring : Collectable
     private bool _isCollected = false;
 
 
-
     private void Update()
     {
         if (!_isCollected)
@@ -20,9 +19,9 @@ public class Ring : Collectable
     
     protected override void Collect()
         {
-            _isCollected = true; // Define _isCollected como true quando o anel é coletado
+            _isCollected = true; 
             SoundFXManager.Instance.PlaySoundFXClip(ringAudio, transform, 0.5f);
             Debug.Log("plim");
-            base.Collect(); // Chama o método base.Collect() para executar a funcionalidade de coleta
+            base.Collect(); 
         }
 }

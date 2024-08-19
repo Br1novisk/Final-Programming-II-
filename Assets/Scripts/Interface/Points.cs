@@ -2,20 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.EventSystems;
 
-public class Points : GameManager
+public class Points : MonoBehaviour
 {
-    private TMP_Text pointsText;
+    [SerializeField] private TMP_Text pointsText;
+    [SerializeField] private GameManager gameManager;  
 
     private void Start()
     {
-        pointsText = GetComponent<TextMeshProUGUI>();
+        if (pointsText == null)
+        {
+            pointsText = GetComponent<TMP_Text>();
+        }
+
+        if (gameManager == null)
+        {
+            gameManager = FindObjectOfType<GameManager>();
+        }
+
+        UpdatePointsText(); 
     }
 
-    public void UpdatePointsText (GameManager gameManager)
+    public void UpdatePointsText()
     {
-        pointsText.text = "Points: " + gameManager.ringPoints.ToString() + "/20";
+        if (pointsText != null && gameManager != null)
+        {
+            pointsText.text = "Points: " + gameManager.ringPoints.ToString() + "/20";
+        }
+        else
+        {
+            Debug.LogError("PointsText ou GameManager não está atribuído!");
+        }
     }
 }
-

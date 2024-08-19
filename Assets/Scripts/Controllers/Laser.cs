@@ -8,7 +8,7 @@ public class Laser : MonoBehaviour
     Transform cam;
 
     [SerializeField] float range = 50f;
-    [SerializeField] float damage = 10f;
+    [SerializeField] public float damage = 10f;
 
     private void Awake()
     {

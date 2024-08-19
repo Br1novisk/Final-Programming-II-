@@ -48,8 +48,9 @@ public class GameManager : MonoBehaviour
         OnGetCollectable.Invoke(this);
         if (ringPoints >= maxPoints)
         {
-            ResetScene();
+            FindObjectOfType<Laser>().damage += 100;
         }
+
     }
 
     public void getIngredient()

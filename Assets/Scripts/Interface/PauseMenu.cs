@@ -17,7 +17,7 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    public void TogglePauseMenu() //Sorry the game is only unpausing correctly by pressing 'ESC' again, not by the button
+    public void TogglePauseMenu() 
     {
         isPaused = !isPaused;
         pauseMenu.SetActive(isPaused);

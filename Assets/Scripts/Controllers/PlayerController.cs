@@ -15,13 +15,17 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-        instance = this; 
-        if( this  != instance)
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
         {
             Destroy(gameObject);
+            return;
         }
+
         currentHealth = maxHealth;
-        
         _characterController = GetComponent<CharacterController>();
         _mainCamera = Camera.main;
     }
@@ -29,7 +33,8 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     public GameObject player;
-      
+
+    private float _mouseX = 0.0f; 
     private float _rotationX = 0.0f;
     private bool _isGrounded = true;
 
@@ -37,7 +42,17 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] 
     public float currentHealth;
 
-    
+
+    void OnEnable()
+    {
+        _mainCamera = Camera.main;
+    }
+
+    void Start()
+    {
+        ResetPlayer();
+    }
+
     //New Input System
     //
 
@@ -168,9 +183,20 @@ public class PlayerController : MonoBehaviour
     private void Die()
     {
         Debug.Log("You died");
-        // Destroy(gameObject);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    void ResetPlayer()
+    {
+        _rotationX = 0.0f;
+        _mouseX = 0.0f;
+        _input = Vector2.zero;
+        _direction = Vector3.zero;
+        _numberOfJumps = 0;
+        currentHealth = maxHealth;
+    }
+
+    
 }
 
 [Serializable]
